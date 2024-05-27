@@ -11,7 +11,7 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: false
-                    primaryKeyName: true
+                    primaryKey: true
               - column:
                   name: street
                   type: varchar(200)

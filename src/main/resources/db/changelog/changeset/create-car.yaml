@@ -11,8 +11,12 @@ databaseChangeLog:
                   type: bigint
                   constraints:
                     nullable: false
-                    primaryKeyName: true
+                    primaryKey: true
               - column:
                   name: model
                   type: varchar(200)
+              - column:
+                  name: person_id
+                  type: bigint
+
 
