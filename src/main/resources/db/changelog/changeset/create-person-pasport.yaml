@@ -12,7 +12,7 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     nullable: false
-                    primaryKeyName: true
+                    primaryKey: true
               - column:
                  name: name
                  type: varchar(200)
@@ -21,20 +21,8 @@ databaseChangeLog:
               - column:
                   name: pasport_id
                   type: bigint
-                  constraints:
-                    primaryKey: true
-              - column:
-                  name: cars_id
-                  type: varchar(200)
-                  constraints:
-                    primaryKeyName: true
-                    nullable: true
-              - column:
-                  name: house_id
-                  type: varchar(200)
-                  constraints:
-                    primaryKeyName: true
-                    nullable: true
+
+
 
 
 
