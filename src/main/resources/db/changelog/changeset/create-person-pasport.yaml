@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-person
+      author: nikita
+      changes:
+        - createTable:
+            tableName: person
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKeyName: true
+              - column:
+                 name: name
+                 type: varchar(200)
+                 constraints:
+                   nullable: false
+              - column:
+                  name: pasport_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: cars_id
+                  type: varchar(200)
+                  constraints:
+                    primaryKeyName: true
+                    nullable: true
+              - column:
+                  name: house_id
+                  type: varchar(200)
+                  constraints:
+                    primaryKeyName: true
+                    nullable: true
+
+
+

@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/create-pasport.yaml
+  - include:
+      file: db/changelog/changeset/create-house.yaml
+  - include:
+      file: db/changelog/changeset/create-car.yaml
+  - include:
+      file: db/changelog/changeset/create-person-pasport.yaml
+  - include:
+      file: db/changelog/changeset/create-person-house.yaml

@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-pasport
+      author: nikita
+      changes:
+        - createTable:
+            tableName: pasport
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: series
+                  type: bigint

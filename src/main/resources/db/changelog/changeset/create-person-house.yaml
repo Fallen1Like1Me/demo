@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-person-house
+      author: nikitos
+      changes:
+        - createTable:
+            tableName: person-house
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKeyName: true
+              - column:
+                  name: person_id
+                  type: bigint
+              - column:
+                  name: house_id
+                  type: bigint
