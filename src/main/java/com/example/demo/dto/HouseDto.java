@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -13,6 +12,6 @@ import java.util.List;
 public class HouseDto {
     private long id;
     private String street;
-    private PersonResponseDto personResponseDto;
-    private List<PersonResponseDto> personResponseDtoList;
+    private PersonDto personDto;
+    private List<PersonDto> personDtoList;
 }

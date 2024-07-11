@@ -6,11 +6,12 @@ import lombok.Data;
 import java.util.List;
 @Data
 @Entity
+@Table(name = "houses")
 public class House {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long id;
-    @JoinTable(name = "ref_person_houses",
+    @JoinTable(name = "person_house",
     joinColumns = @JoinColumn(name = "house_id"),
     inverseJoinColumns = @JoinColumn(name = "person_id"))
     @ManyToMany

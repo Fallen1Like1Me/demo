@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.example.demo.enums.SexType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,7 +15,10 @@ public class Person {
     private long id;
     private String name;
     private String lastname;
-    @OneToMany
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sex", updatable = false)
+    private SexType sex;
+    @OneToMany(mappedBy = "person")
     private List<Car> cars;
     @OneToOne
     private Pasport pasport;

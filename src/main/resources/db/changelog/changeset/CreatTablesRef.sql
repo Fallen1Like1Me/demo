@@ -16,3 +16,8 @@ FOREIGN KEY (person_id) REFERENCES person(id);
 ALTER TABLE person_house
 ADD CONSTRAINT house_id
 FOREIGN KEY (house_id) REFERENCES houses(id);
+
+ALTER TABLE person_house
+ADD CONSTRAINT pk_all
+PRIMARY KEY (house_id, person_id)
+
