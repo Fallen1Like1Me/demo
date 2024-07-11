@@ -8,7 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: bigint
+                  type: bigserial
                   autoIncrement: true
                   constraints:
                     nullable: false
@@ -21,6 +21,12 @@ databaseChangeLog:
               - column:
                   name: pasport_id
                   type: bigint
+              - column:
+                  name: create_date
+                  type: timestamp with time zone
+              - column:
+                  name: lastname
+                  type: varchar(20)
 
 
 

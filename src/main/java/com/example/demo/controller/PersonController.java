@@ -1,24 +1,15 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.CarDto;
-import com.example.demo.dto.PapsortDto;
-import com.example.demo.dto.PersonResponseDto;
-import com.example.demo.mappers.CarMapper;
+import com.example.demo.dto.PersonDto;
 import com.example.demo.mappers.PersonMapper;
-import com.example.demo.model.Car;
 import com.example.demo.model.House;
 import com.example.demo.model.Person;
-import com.example.demo.service.PersonService;
+import com.example.demo.service.PersonServiceImpl;
 import jakarta.websocket.server.PathParam;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,40 +17,44 @@ import java.util.stream.Collectors;
 public class PersonController {
 
     private final PersonMapper personMapper;
-    private final PersonService personService;
+    private final PersonServiceImpl personServiceImpl;
     @PostMapping("/save")
-    public PersonResponseDto savePerson(@RequestBody Person person){
-        Person founded = personService.savePerson(person);
+    public PersonDto savePerson(@RequestBody PersonDto personDto){
+        Person founded = personServiceImpl.savePerson(personMapper.dtoToEntity(personDto));
         return personMapper.entityToDto(founded);
     }
 
     @GetMapping("/all")
-    public List<PersonResponseDto> getAllPerson(){
-    var personList= personService.getAllPerson();
+    public List<PersonDto> getAllPerson(){
+    var personList= personServiceImpl.getAllPerson();
     return personMapper.mapToDto(personList);
     }
 
     @GetMapping("/getById/{id}")
-    public PersonResponseDto getById(@PathVariable Long id){
-        var test1 =personService.getById(id);
+    public PersonDto getById(@PathVariable Long id){
+        var test1 = personServiceImpl.getById(id);
         var test = personMapper.entityToDto(test1);
         return test;
     }
 
     @DeleteMapping("/deleteById")
     public void deletById(@PathParam("id") Long id){
-        personService.deleteById(id);
+        personServiceImpl.deleteById(id);
     }
 
     @PatchMapping("/changeName")
     public Person changeName(@RequestBody Person person){
-        return personService.changeName(person);
+        return personServiceImpl.changeName(person);
     }
 
     @GetMapping("/getAllByHouseList")
-    public List<PersonResponseDto> getAllByHouseList(List<House> houseList){
-       return personMapper.mapToDto(personService.getAllByHouseList(houseList));
+    public List<PersonDto> getAllByHouseList(List<House> houseList){
+       return personMapper.mapToDto(personServiceImpl.getAllByHouseList(houseList));
     }
 
+    @GetMapping("/getAllPersonByHouseList")
+    public List<PersonDto> getAllPersonByHouseListStreet(@PathParam("street") String street){
+        return personMapper.mapToDto(personServiceImpl.getAllByHouseStreet(street));
+    }
 }
 

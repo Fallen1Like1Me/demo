@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PapsortDto {
     private Long id;
+    private Integer series;
 }

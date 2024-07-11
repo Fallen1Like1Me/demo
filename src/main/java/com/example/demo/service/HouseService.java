@@ -1,30 +1,22 @@
 package com.example.demo.service;
 
+import com.example.demo.exception.EntityNotFoundException;
 import com.example.demo.model.House;
 import com.example.demo.model.Person;
-import com.example.demo.repository.HouseRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
-@RequiredArgsConstructor
-@Service
-public class HouseService {
-    private final HouseRepository houseRepository;
+public interface HouseService {
+    public House saveHouse(House house);
 
+    public List<House> getAllHouses();
 
-    public House saveHouse(House house){
-       return houseRepository.save(house);
-    }
+    public List<House> getHousesByPerson(Person person);
 
-    public List<House> getAllHouses(){
-        return houseRepository.findAll();
-    }
+    public House getHouseById(Long id);
 
-    public List<House> getHousesByPerson(Person person){
-        return houseRepository.findAllByPersonList(List.of(person));
-    }
+    public List<House> getHousesByStreet(String street);
+
+    public House postPerson(Long personId, Long houseId);
 }

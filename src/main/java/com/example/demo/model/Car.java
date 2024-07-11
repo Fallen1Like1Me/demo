@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+@Table(name = "cars")
 @NamedNativeQuery( name = "findAllByPersonId",
 query = "SELECT * FROM cars WHERE person_id = ?",
 resultClass = Car.class )

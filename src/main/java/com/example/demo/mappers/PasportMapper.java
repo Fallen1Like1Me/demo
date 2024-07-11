@@ -9,7 +9,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PasportMapper {
     PapsortDto pasportEntityToDto(Pasport pasport);
+
     Pasport pasportDtoToEntity(PapsortDto papsortDto);
+
     List<Pasport> mapToEntity(List<PapsortDto> dtoList);
+
     List<PapsortDto> mapToDto(List<Pasport> pasportList);
 }

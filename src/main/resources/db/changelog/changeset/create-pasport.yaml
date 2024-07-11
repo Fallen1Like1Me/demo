@@ -8,10 +8,19 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: bigint
+                  type: bigserial
                   constraints:
-                    nullable: false
                     primaryKey: true
               - column:
                   name: series
                   type: bigint
+                  constraints:
+                    unique: true
+              - column:
+                  name: person_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: person_id
+                    references: person(id)
+                    unique: true
+
