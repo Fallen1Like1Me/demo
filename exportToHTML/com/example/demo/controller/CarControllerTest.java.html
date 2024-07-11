@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>CarControllerTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CarControllerTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">demo</span><span class="s2">.</span><span class="s1">controller</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">demo</span><span class="s2">.</span><span class="s1">model</span><span class="s2">.</span><span class="s1">Car</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">demo</span><span class="s2">.</span><span class="s1">service</span><span class="s2">.</span><span class="s1">CarServiceImpl</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">jupiter</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">Test</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">mockito</span><span class="s2">.</span><span class="s1">Mockito</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">beans</span><span class="s2">.</span><span class="s1">factory</span><span class="s2">.</span><span class="s1">annotation</span><span class="s2">.</span><span class="s1">Autowired</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">boot</span><span class="s2">.</span><span class="s1">test</span><span class="s2">.</span><span class="s1">autoconfigure</span><span class="s2">.</span><span class="s1">web</span><span class="s2">.</span><span class="s1">servlet</span><span class="s2">.</span><span class="s1">WebMvcTest</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">boot</span><span class="s2">.</span><span class="s1">test</span><span class="s2">.</span><span class="s1">mock</span><span class="s2">.</span><span class="s1">mockito</span><span class="s2">.</span><span class="s1">MockBean</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">test</span><span class="s2">.</span><span class="s1">web</span><span class="s2">.</span><span class="s1">servlet</span><span class="s2">.</span><span class="s1">MockMvc</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">ArrayList</span><span class="s2">;</span>
+
+<span class="s0">import static </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">jupiter</span><span class="s2">.</span><span class="s1">api</span><span class="s2">.</span><span class="s1">Assertions</span><span class="s2">.*;</span>
+<span class="s0">import static </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">test</span><span class="s2">.</span><span class="s1">web</span><span class="s2">.</span><span class="s1">servlet</span><span class="s2">.</span><span class="s1">request</span><span class="s2">.</span><span class="s1">MockMvcRequestBuilders</span><span class="s2">.</span><span class="s1">get</span><span class="s2">;</span>
+<span class="s0">import static </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">test</span><span class="s2">.</span><span class="s1">web</span><span class="s2">.</span><span class="s1">servlet</span><span class="s2">.</span><span class="s1">result</span><span class="s2">.</span><span class="s1">MockMvcResultMatchers</span><span class="s2">.</span><span class="s1">jsonPath</span><span class="s2">;</span>
+<span class="s0">import static </span><span class="s1">org</span><span class="s2">.</span><span class="s1">springframework</span><span class="s2">.</span><span class="s1">test</span><span class="s2">.</span><span class="s1">web</span><span class="s2">.</span><span class="s1">servlet</span><span class="s2">.</span><span class="s1">result</span><span class="s2">.</span><span class="s1">MockMvcResultMatchers</span><span class="s2">.</span><span class="s1">status</span><span class="s2">;</span>
+
+<span class="s1">@WebMvcTest</span><span class="s2">(</span><span class="s1">CarController</span><span class="s2">.</span><span class="s0">class</span><span class="s2">)</span>
+<span class="s0">class </span><span class="s1">CarControllerTest </span><span class="s2">{</span>
+    <span class="s1">@Autowired</span>
+    <span class="s1">MockMvc mockMvc</span><span class="s2">;</span>
+    <span class="s1">@MockBean</span>
+    <span class="s1">CarServiceImpl carService</span><span class="s2">;</span>
+<span class="s1">@Test</span>
+    <span class="s0">void </span><span class="s1">getAllCars</span><span class="s2">() </span><span class="s0">throws </span><span class="s1">Exception </span><span class="s2">{</span>
+        <span class="s1">Mockito</span><span class="s2">.</span><span class="s1">when</span><span class="s2">(</span><span class="s1">carService</span><span class="s2">.</span><span class="s1">getAllCars</span><span class="s2">()).</span><span class="s1">thenReturn</span><span class="s2">(</span><span class="s0">new </span><span class="s1">ArrayList</span><span class="s2">&lt;</span><span class="s1">Car</span><span class="s2">&gt;());</span>
+
+        <span class="s1">mockMvc</span><span class="s2">.</span><span class="s1">perform</span><span class="s2">(</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;/getAllCars&quot;</span><span class="s2">))</span>
+                <span class="s2">.</span><span class="s1">andExpect</span><span class="s2">(</span><span class="s1">status</span><span class="s2">().</span><span class="s1">isOk</span><span class="s2">())</span>
+                <span class="s2">.</span><span class="s1">andExpect</span><span class="s2">(</span><span class="s1">jsonPath</span><span class="s2">(</span><span class="s3">&quot;$.length()&quot;</span><span class="s2">).</span><span class="s1">value</span><span class="s2">(</span><span class="s4">3</span><span class="s2">));</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>
